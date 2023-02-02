@@ -14,6 +14,6 @@ const app = express();
 app
   .use(cors())
   .use(express.json())
-  .use("/transactions", transactionsRouter);
+  .use('/transactions', transactionsRouter);
 
 app.listen(process.env.PORT, () => console.log(`Magic happens on ${process.env.PORT}`));

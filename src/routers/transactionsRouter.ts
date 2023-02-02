@@ -6,6 +6,6 @@ import { newTransactionSchema } from '../schemas/transactionsSchemas.js';
 const transactionsRouter = Router();
 
 transactionsRouter
-  .post("", validateBody(newTransactionSchema), postTransaction);
+  .post('', validateBody(newTransactionSchema), postTransaction);
 
 export { transactionsRouter };

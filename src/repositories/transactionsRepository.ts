@@ -1,5 +1,5 @@
-import { prisma } from "../config/database.js";
-import { Transactions, TypeNames } from "@prisma/client";
+import { prisma } from '../config/database.js';
+import { Transactions } from '@prisma/client';
 
 async function createTransactions(createData: CreateTransactionParams[]) {
   return prisma.transactions.createMany({
@@ -7,7 +7,7 @@ async function createTransactions(createData: CreateTransactionParams[]) {
   });
 }
 
-export type CreateTransactionParams = Omit<Transactions, "id" | "createdAt" | "updatedAt">;
+export type CreateTransactionParams = Omit<Transactions, 'id' | 'createdAt' | 'updatedAt'>;
 
 const transactionRepository = {
   createTransactions

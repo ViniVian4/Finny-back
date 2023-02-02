@@ -1,11 +1,11 @@
-import { prisma } from "../config/database.js";
+import { prisma } from '../config/database.js';
 
 async function createCustomType(name: string) {
   return prisma.customTypes.create({
     data: {
       name: name
     }
-  })
+  });
 }
 
 async function findCustomTypeByName(name: string) {
@@ -22,6 +22,6 @@ async function findCustomTypeByName(name: string) {
 const customTypesRepository = {
   createCustomType,
   findCustomTypeByName
-}
+};
 
-export default customTypesRepository
+export default customTypesRepository;

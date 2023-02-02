@@ -1,13 +1,13 @@
-import transactionRepository, { CreateTransactionParams } from "../repositories/transactionsRepository.js";
-import customTypesRepository from "../repositories/customTypesRepository.js";
-import { TypeNames } from "@prisma/client";
+import transactionRepository, { CreateTransactionParams } from '../repositories/transactionsRepository.js';
+import customTypesRepository from '../repositories/customTypesRepository.js';
+import { TypeNames } from '@prisma/client';
 import dayjs from 'dayjs';
 
 function generateData(newTransaction: FrontData, id: number) {
-  let data: CreateTransactionParams[] = [];
+  const data: CreateTransactionParams[] = [];
 
   for (let i = 0; i < newTransaction.installments; i++) {
-    const date = dayjs(newTransaction.date).add(i, 'month')
+    const date = dayjs(newTransaction.date).add(i, 'month');
 
     data.push({
       name: newTransaction.name,
@@ -32,7 +32,7 @@ async function createTransaction(newTransaction: FrontData) {
     customType = await customTypesRepository.createCustomType(newTransaction.customTypeName);
   }
 
-  let data = generateData(newTransaction, customType.id);
+  const data = generateData(newTransaction, customType.id);
 
   return transactionRepository.createTransactions(data);
 }
@@ -48,6 +48,6 @@ type FrontData = {
 
 const transactionsService = {
   createTransaction
-}
+};
 
-export default transactionsService
+export default transactionsService;

@@ -7,4 +7,4 @@ export const newTransactionSchema = Joi.object({
   installments: Joi.number().min(1).required(),
   type: Joi.string().required(),
   customTypeName: Joi.string().min(1).max(20).required()
-})
+});

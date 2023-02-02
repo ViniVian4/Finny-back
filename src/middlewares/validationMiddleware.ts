@@ -17,7 +17,7 @@ function validate(schema: ObjectSchema, type: 'body') {
     } else {
       res.sendStatus(httpStatus.BAD_REQUEST);
     }
-  }
+  };
 }
 
 type ValidationMiddleware = (req: Request, res: Response, next: NextFunction) => void;
