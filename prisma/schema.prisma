@@ -1,0 +1,35 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CustomTypes {
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(20)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  Transactions Transactions[]
+}
+
+model Transactions {
+  id           Int         @id @default(autoincrement())
+  name         String      @db.VarChar(25)
+  value        Int
+  date         String      @db.VarChar(10)
+  installments Int?
+  customTypeId Int
+  type         TypeNames
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  CustomTypes  CustomTypes @relation(fields: [customTypeId], references: [id])
+}
+
+enum TypeNames {
+  EXPENSE
+  INCOME
+}
