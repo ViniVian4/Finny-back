@@ -1,4 +1,4 @@
-import { prisma } from '../config/database.js';
+import { prisma } from '../config/database';
 
 async function createCustomType(name: string) {
   return prisma.customTypes.create({

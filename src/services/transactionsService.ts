@@ -1,5 +1,5 @@
-import transactionRepository, { CreateTransactionParams } from '../repositories/transactionsRepository.js';
-import customTypesRepository from '../repositories/customTypesRepository.js';
+import transactionRepository, { CreateTransactionParams } from '../repositories/transactionsRepository';
+import customTypesRepository from '../repositories/customTypesRepository';
 import { TypeNames } from '@prisma/client';
 import dayjs from 'dayjs';
 
@@ -9,10 +9,14 @@ function generateData(newTransaction: FrontData, id: number) {
   for (let i = 0; i < newTransaction.installments; i++) {
     const date = dayjs(newTransaction.date).add(i, 'month');
 
+    if (!date) {
+      throw { name: 'bad request' };
+    }
+
     data.push({
       name: newTransaction.name,
       value: newTransaction.value,
-      date: date.format('DD/MM/YYYY'),
+      date: date.format('MM/DD/YYYY'),
       installments: (newTransaction.installments - i),
       type: newTransaction.type,
       customTypeId: id

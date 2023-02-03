@@ -1,4 +1,4 @@
-import { prisma } from '../config/database.js';
+import { prisma } from '../config/database';
 import { Transactions } from '@prisma/client';
 
 async function createTransactions(createData: CreateTransactionParams[]) {

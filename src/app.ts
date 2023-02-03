@@ -1,12 +1,11 @@
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 
-import { transactionsRouter } from './routers/transactionsRouter.js';
+import { transactionsRouter } from './routers/transactionsRouter';
 
-import { loadEnv } from './config/envs.js';
-import { connectDb } from './config/database.js';
+import { loadEnv } from './config/envs';
+import { connectDb } from './config/database';
 
-connectDb();
 loadEnv();
 
 const app = express();
@@ -16,4 +15,9 @@ app
   .use(express.json())
   .use('/transactions', transactionsRouter);
 
-app.listen(process.env.PORT, () => console.log(`Magic happens on ${process.env.PORT}`));
+export function init(): Promise<Express> {
+  connectDb();
+  return Promise.resolve(app);
+}
+
+export default app;

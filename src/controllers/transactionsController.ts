@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import { Response, Request } from 'express';
 
-import transactionsService from '../services/transactionsService.js';
+import transactionsService from '../services/transactionsService';
 
 export async function postTransaction(req: Request, res: Response) {
   try {

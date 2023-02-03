@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { validateBody } from '../middlewares/validationMiddleware.js';
-import { postTransaction } from '../controllers/transactionsController.js';
-import { newTransactionSchema } from '../schemas/transactionsSchemas.js';
+import { validateBody } from '../middlewares/validationMiddleware';
+import { postTransaction } from '../controllers/transactionsController';
+import { newTransactionSchema } from '../schemas/transactionsSchemas';
 
 const transactionsRouter = Router();
 
